@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <script>
+    var VerificationCode = '';
+    var LineIdinScript = '';
+    var StudentIdInScript = '';    
+
+    google.script.url.getLocation(function(location){
+      console.log(location.parameters['LineId'][0]);
+      LineIdinScript = location.parameters['LineId'][0];
+    });
+
+    google.script.run
+     .withSuccessHandler(logg)
+     .getScriptUrl();
+
+    function logg(a){
+      console.log(a);
+      return 1;
+    };
+
+    function sendVerEmail(a){
+      VerificationCode = makeid(8);
+      var Id = document.getElementById('StudentId').value;
+      var Array = {"StudentId": [Id], "VeriCode": [VerificationCode]};
+      console.log(Array);
+      document.getElementById("SendEmail").innerHTML = "Resend Verification Email";
+      document.getElementById("confirm").innerHTML = "Your verification code has been sent to: "+Id+"@student.chula.ac.th";
+      
+      google.script.run
+        .withSuccessHandler(logg)
+        .sendVeriEmail(Array);
+
+      StudentIdInScript = Id;
+      console.log(StudentIdInScript);
+    };
+
+    function makeid(length) {
+      var result           = '';
+      var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      var charactersLength = characters.length;
+      for ( var i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      return result;
+    }
+
+    function addLineId(){
+      var Array = {"StudentId": [StudentIdInScript], "LineId": [LineIdinScript]};
+      google.script.run
+        .withSuccessHandler(logg)
+        .registerLineId(Array);  
+    }
+
+    function reLoad() {
+      google.script.run
+        .withSuccessHandler(function(url){
+        window.open(url+'?LineId='+LineIdinScript,'_top');
+        })
+        .getScriptUrl();
+        return 0;
+    }
+
+    function CheckVeriCode(){
+      if(VerificationCode == ''){
+        console.log("InCorrected!");
+        document.getElementById("veri").innerHTML = "Please Enter Your StudentId before Verify your code";
+        return 0;
+      }
+      if(document.getElementById('Verification').value == ''){
+        console.log("InCorrected!");
+        document.getElementById("veri").innerHTML = "Please Enter Your Verification Code before Clicking Verify";
+        return 0;
+      }
+      if(document.getElementById('Verification').value == VerificationCode){
+        console.log("Corrected!");
+        addLineId();
+        document.getElementById("veri").innerHTML = "Corrected, you will be redirected to main page with in 3 seconds";
+        setTimeout(reLoad, 3000);
+        return 1;
+      }
+      console.log("InCorrected!");
+      document.getElementById("veri").innerHTML = "Your verification code is incorrect";
+      return 0;
+    }
+
+    </script>
+  </head>
+  <body>
+    Register page
+    <br><br><br>
+    Student Id:<br>
+    <input type="text" id="StudentId" placeholder="Enter your Student Id">
+    <button onclick="sendVerEmail()" id="SendEmail">Send Verification Email</button>
+    <br>
+    <br>
+    Verification code:<br>
+    <input type="text" id="Verification" placeholder="Enter Verification from your student email">
+    <button onclick="CheckVeriCode()" id="check">Verify</button>
+    <br>
+    <p id="confirm"></p>
+    <p id="veri"></p>
+  </body>
+</html>
