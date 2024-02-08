@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR generator</title>
+<body>
+
+<script src="https://static.line-scdn.net/liff/edge/versions/2.9.0/sdk.js"></script>
+  <script>
+  	var link = 'https://chart.googleapis.com/chart?cht=qr&chl=anterior&chs=180x180&choe=UTF-8&chld=L|2';
+    
+    function runApp() {
+      liff.getProfile().then(profile => {
+        link = 'https://chart.googleapis.com/chart?cht=qr&chl='+profile.userId+'&chs=180x180&choe=UTF-8&chld=L|2';
+       }).catch(err => console.error(err));
+    }
+    liff.init({ liffId: "1657295672-obKrY8Z0" }, () => {
+      if (liff.isLoggedIn()) {
+        runApp()
+      } else {
+        liff.login();
+      }
+    }, err => console.error(err.code, error.message));
+    
+    function myFunction() {
+
+  document.getElementById("myImg").src=link;
+}
+  </script>
+
+<center><img id="myImg" src="qrcode.jpg" width="200" height="200"></center>
+
+<center><p>Click the button to display your Token QR code.</p></center>
+
+<center><button onclick="myFunction()">Generate QR code</button></center>
+
+<p><a href="https://liff.line.me/1657295672-boyXZez1">Back to main page</a></p>
+
+
+
+</body>
+</html>
