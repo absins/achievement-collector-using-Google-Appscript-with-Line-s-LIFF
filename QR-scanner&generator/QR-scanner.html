@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR reader</title>
+<body>
+
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <script>
+    var LineToken = '';
+  	
+    
+
+    liff.init({ liffId: "1657295672-VnGYvq6J" }, () => {
+      if (liff.isLoggedIn()) {
+      } else {
+        liff.login();
+      }
+    }, err => console.error(err.code, error.message));
+    
+    async function scanCodeV2() {
+      try {
+        const result = await liff.scanCodeV2();
+        console.log(result.value);
+        LineToken = result.value;
+        
+        document.getElementById("LT").innerText = 'This is your token ID ' + LineToken;
+      } catch (error) {
+        console.log('scanCodeV2', error);
+      }
+      }
+
+function submit(){
+
+window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSc-ZpO5US2q6DkjkKBgFqgAryncVgvd5cWfvTbiwVX37zmxXw/viewform?usp=pp_url&entry.2087807365='+LineToken;
+  }
+  
+  </script>
+
+<center><div id='LT'>Scan QR code first</div></center>
+
+<center><p>Click the button to scan student's Token QR code.</p></center>
+
+<center><button onclick="scanCodeV2()">Scan QR code</button></center>
+
+<center><button onclick="submit()">Submit token</button></center>
+
+
+
+
+
+</body>
+</html>
