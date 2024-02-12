@@ -39,10 +39,10 @@ When students complete any assignment, they can get achievement by generate QR c
 - Create a google form with 2 question, first question is Line token with short answer text response and second question is Achievement number with integer response.
   - Get a pre-filled link to this form with first option answered as "hello".
   - Store the link without word "hello" somewhere, we need to use it later.
+  - Open script editor via this form and replicate code in QR-scanner&generator/Code.gs into this project and fill ID of achievement sheet in variable Ach.
 - Create another LIFF projects set its name QR-generator and endpoint URL to our server directory targeted to QR-generator.html.
 - Create another LIFF projects set its name QR-scanner and endpoint URL to our server directory targeted to QR-scanner.html.
 - In QR-scanner&generator folder, replicate two files named QR-generator.html and QR-scanner.html.
 - Edit file named QR-generator and replace liffId with previously created QR-generator project's LIFF ID.
 - Edit file named QR-scanner and replace liffId with previously created QR-scanner project's LIFF ID, and replace URL in submit() function with the pre-filled google form link we got previously.
 - Upload QR-generator.html and QR-scanner.html to our server in the same directory we submit in LIFF project.
-
