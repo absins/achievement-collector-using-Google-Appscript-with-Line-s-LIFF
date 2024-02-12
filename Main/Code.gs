@@ -1,3 +1,5 @@
+var ID = '';
+var Ach ='';
 function doGet(e) {
   // Updating User Id between 1-2 AM
   var dd = new Date().getUTCHours();
@@ -15,7 +17,7 @@ function doGet(e) {
 }
 
 function decision(hash){
-  var ss= SpreadsheetApp.openById('1mN6gqee83e3D_ukk7Un8a9ribGxQu9vPnkGqkpHCwbc');
+  var ss= SpreadsheetApp.openById(ID);
   var IdSheet = ss.getSheetByName('IdSheet');
   var IdLastRow = IdSheet.getLastRow();
   var IdRange = IdSheet.getRange(2, 1, IdLastRow-1, 2);
@@ -56,7 +58,7 @@ function registerLineId(Id){
   //StudentId = 'student1';
   var LineId = Id['LineId'][0];
   var StudentId = Id['StudentId'][0];
-  var ss= SpreadsheetApp.openById('1mN6gqee83e3D_ukk7Un8a9ribGxQu9vPnkGqkpHCwbc');
+  var ss= SpreadsheetApp.openById(ID);
   var IdSheet = ss.getSheetByName('IdSheet');
   var IdLastRow = IdSheet.getLastRow();
   var IdRange = IdSheet.getRange(2, 1, IdLastRow-1, 2);
@@ -75,9 +77,9 @@ function getdata(LineId){
   //StudentId = 'student1';
   //var Id = {"LineId" : ['6035018930']};
   //LineId = 'ggg';
-  var ss= SpreadsheetApp.openById('1mN6gqee83e3D_ukk7Un8a9ribGxQu9vPnkGqkpHCwbc');
+  var ss= SpreadsheetApp.openById(ID);
   var IdSheet = ss.getSheetByName('IdSheet');
-  var dd= SpreadsheetApp.openById('14qh_n3MNNP4cdbddef14gTwH-Ns_WjoQ6qb6jIsK3ss');
+  var dd= SpreadsheetApp.openById(Ach);
   var database = dd.getSheetByName('individual');
   var IdLastRow = IdSheet.getLastRow();
   var dataLastRow = database.getLastRow();
