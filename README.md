@@ -1,4 +1,4 @@
-# achevement-collector-via-Line-s-LIFF
+# achievement-collector-via-Line-s-LIFF
 A google app script using Line's LIFF as token authorization, to collect and display procedural experience of medical students through gamification.
 
 This project can be divided into two parts which are stored in different folders.
