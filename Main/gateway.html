@@ -1,0 +1,33 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My LIFF v2</title>
+  <style>
+    #pictureUrl { display: block; margin: 0 auto }
+  </style>
+</head>
+<body>
+  <img id="pictureUrl" width="25%">
+  <p id="userId"></p>
+  <p id="displayName"></p>
+  <p id="statusMessage"></p>
+  <p id="getDecodedIDToken"></p>
+  <script src="https://static.line-scdn.net/liff/edge/versions/2.9.0/sdk.js"></script>
+  <script>
+    function runApp() {
+      liff.getProfile().then(profile => {
+      window.location.replace('https://script.google.com/macros/s/AKfycbxIxv0Slj59XRWdWdqUjaPBdH-5ZyhoOcOiBfkmSL6buaELLtk43_husybmOzmRfJvO/exec?LineId='+profile.userId);
+
+      }).catch(err => console.error(err));
+    }
+    liff.init({ liffId: "1657295672-boyXZez1" }, () => {
+      if (liff.isLoggedIn()) {
+        runApp()
+      } else {
+        liff.login();
+      }
+    }, err => console.error(err.code, error.message));
+  </script>
+</body>
+</html>
