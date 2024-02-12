@@ -22,7 +22,25 @@ https://liff.line.me/1657295672-obKrY8Z0
 ## How this project work.
 When we reach this project through gateway page, we will be redireced to Line login page which will get our line token and search through database then show all achievement recorded in database through main page. If users did not register yet, they will be redirected to register page which will send authentication code to their E-mail which required to be filled and they will be redirected back to our main board if registration successfully.
 
+---
+![image](https://github.com/absins/achievement-collector-using-Google-Appscript-with-Line-s-LIFF/assets/53501806/442e2ccd-c5ed-4c09-9cc7-425627032a32)
+
+---
+
+![image](https://github.com/absins/achievement-collector-using-Google-Appscript-with-Line-s-LIFF/assets/53501806/ad140361-bcce-48d0-b88f-6eba3d5754de)
+
+---
+
 When students complete any assignment, they can get achievement by generate QR code via link we gave which will be scanned by our staff and get their Line token id. Our staffs will submit their ID with achievement they completed through a google form which will update said achievement for those students in the database.
+
+---
+![image](https://github.com/absins/achievement-collector-using-Google-Appscript-with-Line-s-LIFF/assets/53501806/3b0981bd-7e71-4ec6-82c8-a80211c08970)
+
+
+---
+![image](https://github.com/absins/achievement-collector-using-Google-Appscript-with-Line-s-LIFF/assets/53501806/2fd84571-8a98-4757-bd85-4ed657ef9791)
+
+
 ## Prerequisite
 - Google workspace which can send emails enough to serve users.
 - Webserver which can host 3 pages of html file.
